@@ -16,11 +16,8 @@
             justify-content: center; /* Centers container horizontally */
         }
         .container {
-            width: 100%;
-            width: 1280px;
-            #border-radius: 8px;
+            width: 100vw;
             overflow: hidden;
- 
         }
         .header {
             position: relative;
@@ -41,32 +38,40 @@
             background: #FEC401; 
             height: 652px; 
             display: flex;
+            justify-content: center; /* Centers container horizontally */
         }
+        .frame1 {
+            display: flex;
+            position: relative; 
+            width: 900px;
+            height: 652px; 
+            justify-content: center; /* Centers container horizontally */
+         }
         .brand-image-1 {
             display: flex;
             position: absolute;
-            left: 466px; 
             top: 40px;  
             width: 311px;
             height: 312px;
         }
         .brand-image-2 {
             position: absolute;
-            left: 201px; 
+            #left: 201px; 
+            left:0px; 
             top: 130px;  
             width: 234px;
             height: 130px;
         }
         .brand-image-3 {
             position: absolute;
-            left: 832px; 
+            right: 0;
             top: 130px;  
             width: 247px;
             height: 128px;
         }
         .brand-welcome {
             position: absolute; 
-            left: 312px; 
+            left: 100px; 
             top: 336px;  
             font-family: 'Montserrat'; 
             font-size: 20px;
@@ -74,7 +79,6 @@
         }
         .brand-openg2p {
             position: absolute;
-            left: 393px; 
             top: 354px;  
             font-family: 'Montserrat'; 
             font-weight: 700; 
@@ -83,8 +87,8 @@
         }
         .brand-interactive {
             position: absolute; 
-            left: 806px; 
-            top: 465px;  
+            left: 750px; 
+            top: 440px;  
             max-width: 248px;
             font-family: 'Montserrat'; 
             font-weight: 500;
@@ -93,7 +97,6 @@
         }
         .brand-interactive-text {
             position: absolute; 
-            left: 312px; 
             top: 525px;  
             max-width: 656px;
             font-family: 'Montserrat'; 
@@ -101,27 +104,26 @@
             font-size: 18px;
             color: #1F1F1F;
             text-align: center;    
-    
         }
         .black-background {
             position: relative;
             background: #000000;
             height: 1010px; 
             display: flex;
+            justify-content: center;
         }
         .black-container {
-            position: absolute; 
-            width: 960px;
-            height: 896px;
-            left: 160px;
-            #top: 52px;
+            display: flex;
+            position: relative;
+            width: 900px;
+            height: 850px;
             top: 20px;
+            justify-content: center;
         }
         .black-explore {
             position: absolute; 
             width: 768px;
             height: 79px;
-            left:96px; 
             top: 8px;  
             font-family: 'Roboto Slab'; 
             font-weight: 500;
@@ -132,7 +134,6 @@
         }
         .black-explore-text {
             position: absolute; 
-            left: 96px; 
             top: 90px;  
             width: 768px;
             font-family: 'Montserrat'; 
@@ -142,13 +143,14 @@
             text-align: center;
         }
        .link-square {
-            position: absolute; 
+            display: flex;
+            position: relative;
             border-radius: 20px;
             background: #FEC401;
-            left: 30px;
             top: 201px;
             width: 267px;
-            height: 302px;
+            #height: 302px;
+            height: 267px;
         }
        .link-icon {
             position: absolute; 
@@ -234,13 +236,15 @@
             <img src="https://openg2p.github.io/project/design-assets/OpenG2PHorizontalLogoLightBackground.png" class="logo">
         </div>
         <div class="brand">
-            <div class="brand-welcome">Welcome to</div>
-            <div class="brand-image-1"><img src="https://openg2p.github.io/project/design-assets/sandbox-landing-1.png"></img></div>
-            <div class="brand-image-2"><img src="https://openg2p.github.io/project/design-assets/brand-image-2.png"></img></div>
-            <div class="brand-image-3"><img src="https://openg2p.github.io/project/design-assets/brand-image-3.png"></img></div>
-            <div class="brand-openg2p">OpenG2P's</div>
-            <div class="brand-interactive">interactive sandbox</div>
-            <div class="brand-interactive-text">a dynamic platform designed for you to explore the functionalities of our modules and see our products in action. This is your gateway to understanding the full potential of our offerings.</div>
+            <div class="frame1">
+                <div class="brand-welcome">Welcome to</div>
+                <div class="brand-image-1"><img src="https://openg2p.github.io/project/design-assets/sandbox-landing-1.png"></img></div>
+                <div class="brand-image-2"><img src="https://openg2p.github.io/project/design-assets/brand-image-2.png"></img></div>
+                <div class="brand-image-3"><img src="https://openg2p.github.io/project/design-assets/brand-image-3.png"></img></div>
+                <div class="brand-openg2p">OpenG2P's</div>
+                <div class="brand-interactive">interactive sandbox</div>
+                <div class="brand-interactive-text">a dynamic platform designed for you to explore the functionalities of our modules and see our products in action. This is your gateway to understanding the full potential of our offerings.</div>
+           </div>
         </div>
         <div class="black-background">
             <div class="black-container">
@@ -248,7 +252,7 @@
                 <div class="black-explore-text">Select a module to experience our interactive sandbox.</div>
 
 	        <a href="${SR_URL}" target="_blank">
-                <div class="link-square">
+                <div class="link-square" style="left: 0px; position: absolute;">
                     <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                     <div class="link-text-title">Social Registry</div>
                     <div class="link-text">Registry building block of OpenG2P</div>
@@ -256,7 +260,7 @@
                 </a>
 
 	        <a href="${PBMS_URL}" target="_blank">
-                <div class="link-square" style="left: 347px">
+                <div class="link-square">
                     <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                     <div class="link-text-title">PBMS</div>
                     <div class="link-text">Program and Beneficiary Management System</div>
@@ -264,7 +268,7 @@
                 </a>
 
 	        <a href="${SPAR_URL}" target="_blank">
-                <div class="link-square" style="left: 664px">
+                <div class="link-square" style="right: 0; position: absolute;">
                     <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                     <div class="link-text-title">SPAR</div>
                     <div class="link-text">Social Payments Account Registry. An ID Mapper building block</div>
@@ -272,7 +276,7 @@
                 </a>
 
 	        <a href="${BRIDGE_URL}" target="_blank">
-                <div class="link-square" style="top: 553px">
+                    <div class="link-square" style="top: 520px; left: 0px; position: absolute;">
                     <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                     <div class="link-text-title">G2P Bridge</div>
                     <div class="link-text">Bulk disbursement orchestrator</div>
