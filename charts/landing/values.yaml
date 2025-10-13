@@ -16,6 +16,7 @@ envVars:
   PBMS_URL: "https://pbms.sandbox.openg2p.org"
   SPAR_URL: "https://spar.sandbox.openg2p.org"
   BRIDGE_URL: "https://bridge.sandbox.openg2p.org"
+  BENEFICIARY_PORTAL_URL: "https://portal.sandbox.openg2p.org"
 
 envVarsFrom: {}
 

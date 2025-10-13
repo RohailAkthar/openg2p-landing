@@ -114,11 +114,12 @@
         }
         .black-container {
             display: flex;
+            flex-direction: column;
+            align-items: center;
             position: relative;
             width: 900px;
-            height: 850px;
-            top: 20px;
-            justify-content: center;
+            min-height: 850px;
+            padding-top: 100px;
         }
         .black-explore {
             position: absolute; 
@@ -142,14 +143,19 @@
             color: #FFFFFF;
             text-align: center;
         }
-       .link-square {
+        .card-grid {
             display: flex;
+            flex-wrap: wrap;
+            gap: 40px 36px; /* vertical and horizontal spacing */
+            justify-content: center;
+            margin-top: 100px;
+        }
+        .link-square {
             position: relative;
-            border-radius: 20px;
-            background: #FEC401;
-            top: 201px;
             width: 267px;
             height: 267px;
+            border-radius: 20px;
+            background: #FEC401;
         }
        .link-icon {
             position: absolute; 
@@ -250,41 +256,51 @@
             <div class="black-container">
                 <div class="black-explore">Let's Explore!</div>
                 <div class="black-explore-text">Select a module to experience our interactive sandbox.</div>
+                <div class="card-grid">
 
-	        <a href="${SR_URL}" target="_blank">
-                <div class="link-square" style="left: 0px; position: absolute;">
-                    <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                    <div class="link-text-title">Social Registry</div>
-                    <div class="link-text">Registry building block of OpenG2P</div>
-                </div>
-                </a>
+                    <a href="${SR_URL}" target="_blank">
+                        <div class="link-square">
+                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-text-title">Social Registry</div>
+                            <div class="link-text">Registry building block of OpenG2P</div>
+                        </div>
+                        </a>
 
-	        <a href="${PBMS_URL}" target="_blank">
-                <div class="link-square">
-                    <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                    <div class="link-text-title">PBMS</div>
-                    <div class="link-text">Program and Beneficiary Management System</div>
-                </div>
-                </a>
+                    <a href="${PBMS_URL}" target="_blank">
+                        <div class="link-square">
+                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-text-title">PBMS</div>
+                            <div class="link-text">Program and Beneficiary Management System</div>
+                        </div>
+                        </a>
 
-	        <a href="${SPAR_URL}" target="_blank">
-                <div class="link-square" style="right: 0; position: absolute;">
-                    <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                    <div class="link-text-title">SPAR</div>
-                    <div class="link-text">Social Payments Account Registry. An ID Mapper building block</div>
-                </div>
-                </a>
+                    <a href="${SPAR_URL}" target="_blank">
+                        <div class="link-square" >
+                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-text-title">SPAR</div>
+                            <div class="link-text">Social Payments Account Registry. An ID Mapper building block</div>
+                        </div>
+                        </a>
 
-	        <a href="${BRIDGE_URL}" target="_blank">
-                    <div class="link-square" style="top: 520px; left: 0px; position: absolute;">
-                    <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                    <div class="link-text-title">G2P Bridge</div>
-                    <div class="link-text">Bulk disbursement orchestrator</div>
+                    <a href="${BRIDGE_URL}" target="_blank">
+                            <div class="link-square" >
+                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-text-title">G2P Bridge</div>
+                            <div class="link-text">Bulk disbursement orchestrator</div>
+                        </div>
+                        </a>
+
+                    <a href="${BENEFICIARY_PORTAL_URL}" target="_blank">
+                        <div class="link-square" style="background-color: #F07B1A;">
+                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-text-title">Beneficiary Portal</div>
+                            <div class="link-text">Portal for beneficiaries to access services and manage their information</div>
+                        </div>
+                    </a>
                 </div>
-                </a>
             </div>
+
         </div>
-   
         <div class="contact-background"> 
             <div class="contact-container"> 
                 <div class="contact-title">Contact Us</div> 

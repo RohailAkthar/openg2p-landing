@@ -29,3 +29,9 @@ questions:
   label: G2P Bridge Hostname
   group: General Settings
 
+- variable: envVars.BENEFICIARY_PORTAL_URL
+  description: URL for Beneficiary Portal 
+  type: string
+  label: Beneficiary Portal Hostname
+  group: General Settings
+
