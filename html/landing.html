@@ -1,117 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenG2P Sandbox</title>
-    <link rel="icon" type="image/svg+xml" href="https://openg2p.github.io/project/design-assets/favicon-for-white-bg.svg">
+    <title>ZUPS</title>
+    <link rel="icon" type="image/svg+xml" href="../public/assets/SMZ.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;500;700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             display: flex;
             align-items: flex-start;
-            justify-content: center; /* Centers container horizontally */
+            justify-content: center;
+            /* Centers container horizontally */
         }
+
         .container {
             width: 100vw;
             overflow: hidden;
         }
+
+        .header-section {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 0;
+        }
+
         .header {
             position: relative;
             border-bottom: 1px solid #ddd;
-            background: #ffffff;
-            height: 80px; 
+            background-color: #007bff;
+            /* fallback blue background */
+            background-image: url('../public/assets/bgbanner.jpg');
+            /* banner file assumed */
+            background-repeat: no-repeat;
+            background-position: top center;
+            /* object top */
+            background-size: cover;
+            height: 120px;
             display: flex;
-         }
-        .logo {
-            width: 144px;
-            height: auto;
-            position: absolute;
-            left: 161px;
-            top: 18px;
+            align-items: center;
+            justify-content: space-between;
+            /* space between left, center, right */
+            padding: 0 20px;
         }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-center {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 20px;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            width: 120px;
+            height: auto;
+            position: relative;
+            left: 0;
+            top: 0;
+        }
+
+        .header-text {
+            margin: 0;
+            /* spacing from logo */
+            font-family: 'Montserrat';
+            line-height: 1.1;
+            white-space: normal;
+            color: #007bff;
+            font-weight: 900;
+            font-size: 36px;
+            /* larger, bold title */
+        }
+
+        .header-text-1 {
+            margin: 4px 0 0 0;
+            font-family: 'Montserrat';
+            line-height: 1.1;
+            white-space: normal;
+            color: #1F1F1F;
+            font-weight: 600;
+            /* lighter than title */
+            font-size: 16px;
+            /* smaller subtitle */
+        }
+
+        .header-text-1 {
+            margin-left: 20px;
+            /* spacing from logo */
+            font-family: 'Montserrat';
+            line-height: 1.2;
+            white-space: normal;
+            color: #000000;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+            /* position within navbar, now centered vertically */
+            position: relative;
+            left: 10;
+            top: 0;
+        }
+
         .brand {
             position: relative;
-            background: #FEC401; 
-            height: 652px; 
+            background: #1A3A97;
             display: flex;
-            justify-content: center; /* Centers container horizontally */
+            justify-content: center;
+            /* Centers container horizontally */
         }
+
         .frame1 {
             display: flex;
-            position: relative; 
+            position: relative;
             width: 900px;
-            height: 652px; 
-            justify-content: center; /* Centers container horizontally */
-         }
+            height: 550px;
+            justify-content: center;
+            /* Centers container horizontally */
+        }
+
         .brand-image-1 {
             display: flex;
             position: absolute;
-            top: 40px;  
+            top: 40px;
             width: 311px;
             height: 312px;
+            border-radius: 15px;
+            overflow: hidden;
         }
+
         .brand-image-2 {
             position: absolute;
-            #left: 201px; 
-            left:0px; 
-            top: 130px;  
+            left: 0px;
+            top: 130px;
             width: 234px;
             height: 130px;
+            border-radius: 15px;
+            overflow: hidden;
         }
+
         .brand-image-3 {
             position: absolute;
             right: 0;
-            top: 130px;  
+            top: 130px;
             width: 247px;
             height: 128px;
+            border-radius: 15px;
+            overflow: hidden;
         }
+
         .brand-welcome {
-            position: absolute; 
-            left: 100px; 
-            top: 336px;  
-            font-family: 'Montserrat'; 
+            position: absolute;
+            top: 390px;
+            /* align to left edge of centered .frame1 (900px wide) with 40px inset */
+            left: calc(50% - 450px + 40px);
+            transform: none;
+            font-family: 'Montserrat';
             font-size: 20px;
             font-weight: 700;
+            color: #FEC401;
+            text-align: left;
+            width: 760px;
         }
+
         .brand-openg2p {
             position: absolute;
-            top: 354px;  
-            font-family: 'Montserrat'; 
-            font-weight: 700; 
-            font-size: 90px;
+            top: 420px;
+            /* align to left edge of centered .frame1 (900px wide) with 40px inset */
+            left: calc(50% - 450px + 40px);
+            transform: none;
+            font-family: 'Montserrat';
+            font-weight: 900;
+            font-size: 40px;
             color: #FFFFFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            text-align: center;
+            max-width: 760px;
+            /* constrain title width */
+            width: 760px;
+            line-height: 1.05;
+            word-break: break-word;
         }
+
         .brand-interactive {
-            position: absolute; 
-            left: 750px; 
-            top: 440px;  
+            position: absolute;
+            left: 750px;
+            top: 440px;
             max-width: 248px;
-            font-family: 'Montserrat'; 
+            font-family: 'Montserrat';
             font-weight: 500;
             font-size: 24px;
             color: #000000;
         }
+
         .brand-interactive-text {
-            position: absolute; 
-            top: 525px;  
+            position: absolute;
+            top: 525px;
             max-width: 656px;
-            font-family: 'Montserrat'; 
-            font-weight: 400; 
+            font-family: 'Montserrat';
+            font-weight: 400;
             font-size: 18px;
             color: #1F1F1F;
-            text-align: center;    
+            text-align: center;
         }
+
         .black-background {
             position: relative;
-            background: #000000;
-            height: 900px; 
+            background: #F3BB1D;
+            height: 780px;
             display: flex;
             justify-content: center;
         }
+
         .black-container {
             display: flex;
             flex-direction: column;
@@ -119,53 +240,61 @@
             position: relative;
             width: 900px;
             min-height: 850px;
-            padding-top: 100px;
+            padding-top: 40px;
         }
+
         .black-explore {
-            position: absolute; 
+            position: absolute;
             width: 768px;
             height: 79px;
-            top: 8px;  
-            font-family: 'Roboto Slab'; 
+            top: 8px;
+            font-family: 'Roboto Slab';
             font-weight: 500;
             font-size: 50px;
-            color: #FFFFFF;
+            color: #000000;
             text-align: center;
+            padding-top: 20px;
 
         }
+
         .black-explore-text {
-            position: absolute; 
-            top: 90px;  
+            position: absolute;
+            top: 90px;
             width: 768px;
-            font-family: 'Montserrat'; 
+            font-family: 'Montserrat';
             font-weight: 'Medium';
             font-size: 22px;
             color: #FFFFFF;
             text-align: center;
         }
+
         .card-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 40px 36px; /* vertical and horizontal spacing */
+            gap: 40px 36px;
+            /* vertical and horizontal spacing */
             justify-content: center;
             margin-top: 100px;
         }
+
         .link-square {
             position: relative;
             width: 267px;
             height: 267px;
             border-radius: 20px;
-            background: #FEC401;
+            background: #FFFFFF;
         }
-       .link-icon {
-            position: absolute; 
+
+        .link-icon {
+            position: absolute;
             left: 203px;
             top: 36px;
             width: 46px;
             height: 46px;
         }
-       .link-text-title {
-            position: absolute; 
+
+        .link-text-title {
+            position: absolute;
             left: 18px;
             top: 35px;
             width: 115px;
@@ -174,8 +303,9 @@
             font-family: 'Roboto Slab';
             color: #514C4C;
         }
-       .link-text {
-            position: absolute; 
+
+        .link-text {
+            position: absolute;
             left: 18px;
             top: 120px;
             width: 232px;
@@ -185,13 +315,15 @@
             font-family: 'Roboto Slab';
             color: #514C4C;
         }
+
         .contact-background {
             position: relative;
             background: #000000;
-            height: 796px; 
+            height: 796px;
             display: flex;
             justify-content: center;
         }
+
         .contact-container {
             position: relative;
             display: flex;
@@ -201,8 +333,9 @@
             justify-content: center;
             text-align: center;
         }
-       .contact-title {
-            position: absolute; 
+
+        .contact-title {
+            position: absolute;
             top: 0px;
             width: 768px;
             height: 79px;
@@ -211,9 +344,11 @@
             font-family: 'Roboto Slab';
             color: #FFFFFF;
             text-align: center;
-        } 
-       .contact-email {
-            position: absolute; 
+            margin-top: 20px;
+        }
+
+        .contact-email {
+            position: absolute;
             top: 98px;
             width: 768px;
             height: 27px;
@@ -222,65 +357,86 @@
             font-family: 'Montserrat';
             color: #F3BB1D;
             text-align: center;
-        } 
+        }
+
         .contact-image {
-            position: absolute; 
+            position: absolute;
             width: 626px;
             height: 610px;
             top: 186px;
             left: 137px;
         }
+
         .hidden {
-        display: none; /* Completely hides the element */
+            display: none;
+            /* Completely hides the element */
         }
-    
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <img src="https://openg2p.github.io/project/design-assets/OpenG2PHorizontalLogoLightBackground.png" class="logo">
+            <div class="header-left">
+                <img src="../public/assets/SMZ.png" class="logo">
+            </div>
+            <div class="header-center">
+                <div class="header-text">Revolutionary Government of Zanzibar</div>
+                <div class="header-text-1">Ministry of Community Development, Gender, Elderly and Children (MoCDGEC)
+                </div>
+            </div>
+            <div class="header-right">
+                <img src="../public/assets/logo_zanzibar.png" class="logo">
+            </div>
         </div>
         <div class="brand">
             <div class="frame1">
                 <div class="brand-welcome">Welcome to</div>
-                <div class="brand-image-1"><img src="https://openg2p.github.io/project/design-assets/sandbox-landing-1.png"></img></div>
-                <div class="brand-image-2"><img src="https://openg2p.github.io/project/design-assets/brand-image-2.png"></img></div>
-                <div class="brand-image-3"><img src="https://openg2p.github.io/project/design-assets/brand-image-3.png"></img></div>
-                <div class="brand-openg2p">OpenG2P's</div>
-                <div class="brand-interactive">interactive sandbox</div>
-                <div class="brand-interactive-text">a dynamic platform designed for you to explore the functionalities of our modules and see our products in action. This is your gateway to understanding the full potential of our offerings.</div>
-           </div>
+                <div class="brand-image-1"><img
+                        src="https://openg2p.github.io/project/design-assets/sandbox-landing-1.png"></img></div>
+                <div class="brand-image-2"><img
+                        src="https://openg2p.github.io/project/design-assets/brand-image-2.png"></img></div>
+                <div class="brand-image-3"><img
+                        src="https://openg2p.github.io/project/design-assets/brand-image-3.png"></img></div>
+                <div class="brand-openg2p">Zanzibar Universal Pensioner Scheme</div>
+                <!-- <div class="brand-interactive">interactive sandbox</div>
+                <div class="brand-interactive-text">a dynamic platform designed for you to explore the functionalities
+                    of our modules and see our products in action. This is your gateway to understanding the full
+                    potential of our offerings.</div> -->
+            </div>
         </div>
         <div class="black-background">
             <div class="black-container">
                 <div class="black-explore">Let's Explore!</div>
-                <div class="black-explore-text">Select a module to experience our interactive sandbox.</div>
+                <!-- <div class="black-explore-text">Select a module to experience.</div> -->
                 <div class="card-grid">
 
                     <a href="${SR_URL}" target="_blank">
                         <div class="link-square">
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-icon"><img
+                                    src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                             <div class="link-text-title">Pensioner Registry</div>
                             <div class="link-text">Pensioner Registry</div>
                         </div>
-                        </a>
+                    </a>
 
                     <a href="${PBMS_URL}" target="_blank">
                         <div class="link-square">
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                            <div class="link-icon"><img
+                                    src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                             <div class="link-text-title">ZUPS DBT</div>
                             <div class="link-text">Zanzibar Universal Pensioner Scheme Direct Benefit Transfer</div>
                         </div>
-                        </a>
+                    </a>
 
                     <a href="${SPAR_URL}" target="_blank">
-                        <div class="link-square" >
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                        <div class="link-square">
+                            <div class="link-icon"><img
+                                    src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                             <div class="link-text-title">SPAR</div>
                             <div class="link-text">Social Payments Account Registry. An ID Mapper building block</div>
                         </div>
-                        </a>
+                    </a>
 
                     <!-- <a href="${BRIDGE_URL}" target="_blank">
                             <div class="link-square" >
@@ -291,24 +447,27 @@
                         </a> -->
 
                     <a href="${BENEFICIARY_PORTAL_URL}" target="_blank">
-                        <div class="link-square" style="background-color: #F07B1A;">
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
+                        <div class="link-square">
+                            <div class="link-icon"><img
+                                    src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
                             <div class="link-text-title">Beneficiary Portal</div>
-                            <div class="link-text">Portal for beneficiaries to access services and manage their information</div>
+                            <div class="link-text">Portal for beneficiaries to access services and manage their
+                                information</div>
                         </div>
                     </a>
                 </div>
             </div>
 
         </div>
-        <div class="contact-background"> 
-            <div class="contact-container"> 
-                <div class="contact-title">Contact Us</div> 
-                <div class="contact-email">info@openg2p.org</div> 
-                <div class="contact-image"><img src="https://openg2p.github.io/project/design-assets/collage.png"></img></div>
+        <div class="contact-background">
+            <div class="contact-container">
+                <div class="contact-title">Contact Us</div>
+                <div class="contact-email">info@Zanzibar.gov.tz</div>
+                <div class="contact-image"><img src="https://openg2p.github.io/project/design-assets/collage.png"></img>
+                </div>
             </div>
         </div>
     </div>
 </body>
-</html>
 
+</html>
