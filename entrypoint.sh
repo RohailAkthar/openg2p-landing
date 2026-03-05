@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# Replace placeholders in HTML with environment variables
-envsubst '${SR_REGISTRATION_PORTAL_URL} ${SR_PENSIONER_REGISTRY_URL} ${SR_PENSION_MANAGEMENT_URL} ${SR_DASHBOARD_URL} ${SR_ADMIN_CONSOLE_URL} ${SR_BENEFICIARY_PORTAL_URL} ${SR_MINLO_DASHBOARD_URL} ${SR_G2P_BRIDGE_URL} ${SR_SPAR_URL}' < /usr/share/nginx/html/html/landing.html > /usr/share/nginx/html/html/index.html
+# Debug: Print the value we are seeing (this will show up in Rancher logs)
+echo "SR_REGISTRATION_PORTAL_URL is: $SR_REGISTRATION_PORTAL_URL"
+
+# Replace placeholders and move to root
+envsubst < /usr/share/nginx/html/html/landing.html | sed 's/\.\.\/public/public/g' > /usr/share/nginx/html/index.html
+
+# Ensure CSS is available at the root level alongside index.html
+cp /usr/share/nginx/html/html/style.css /usr/share/nginx/html/style.css
 
 # Start NGINX
 nginx -g 'daemon off;'

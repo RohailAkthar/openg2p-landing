@@ -9,8 +9,11 @@ COPY ./public /usr/share/nginx/html/public
 # Copy the entrypoint script
 COPY ./entrypoint.sh /entrypoint.sh
 
-# Make the script executable
-RUN chmod +x /entrypoint.sh
+# Make the script executable and fix Windows line endings
+RUN chmod +x /entrypoint.sh && sed -i 's/\r$//' /entrypoint.sh
+
+# Remove default nginx welcome page
+RUN rm /usr/share/nginx/html/index.html
 
 # Set environment variable for testing (can be overridden in deployment)
 ENV SR_REGISTRATION_PORTAL_URL="https://sr.explore.openg2p.org"
