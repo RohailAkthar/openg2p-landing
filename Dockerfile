@@ -1,7 +1,10 @@
 FROM nginx:latest
 
-# Copy the HTML file with the placeholder
-COPY ./html/landing.html /usr/share/nginx/html
+# Copy the HTML and CSS files
+COPY ./html/ /usr/share/nginx/html/
+
+# Copy the public folder
+COPY ./public/ /usr/share/nginx/html/public/
 
 # Copy the entrypoint script
 COPY ./entrypoint.sh /entrypoint.sh
