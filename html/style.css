@@ -1,0 +1,274 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+.desktop {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background:
+        linear-gradient(to left,
+            rgba(25, 55, 147, 1),
+            rgba(11, 123, 199, 1) 40%,
+            rgba(42, 136, 195, 1) 100%);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.clip-path-group {
+    position: absolute;
+    width: 50%;
+    height: auto;
+    top: 0;
+    right: 0;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+.group {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    bottom: 0;
+    left: 0;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.registration-portal {
+    position: absolute;
+    width: 130px;
+    height: auto;
+    top: 30px;
+    right: 40px;
+    z-index: 10;
+}
+
+.portal-logo {
+    width: 100%;
+    height: auto;
+}
+
+.main-card {
+    position: relative;
+    width: 94%;
+    height: 180px;
+    margin: 140px auto 0 auto;
+    background: #d6d5d5;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    gap: 8px;
+    overflow: hidden;
+    z-index: 5;
+}
+
+.card-background {
+    position: absolute;
+    width: 390px;
+    top: -10px;
+    right: -10px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.card-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center;
+}
+
+.card-title {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: black;
+    font-size: 28px;
+    text-align: center;
+    margin: 0;
+    z-index: 2;
+}
+
+.card-logo {
+    width: 320px;
+    height: 70px;
+    object-fit: contain;
+    z-index: 2;
+}
+
+.know-more-btn {
+    width: 160px;
+    height: 40px;
+    background: #2b89c4;
+    border: none;
+    border-radius: 9px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.know-more-btn:hover {
+    background: #2477ad;
+}
+
+.main-title {
+    position: absolute;
+    top: 65px;
+    left: 40px;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: #F8F6F6;
+    font-size: 28px;
+    z-index: 10;
+}
+
+.welcome-text {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    color: #f8f201;
+    font-size: 18px;
+    z-index: 10;
+}
+
+.header {
+    display: none;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 19px;
+    left: 31px;
+    width: 52px;
+    height: 44px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.menu-btn:hover {
+    opacity: 0.7;
+}
+
+.menu-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+.color-stripes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    display: flex;
+    z-index: 20;
+}
+
+.stripe {
+    flex: 1;
+    height: 8px;
+}
+
+.stripe-green {
+    background: #32ca37;
+}
+
+.stripe-yellow {
+    background: #f8f201;
+}
+
+.stripe-black {
+    background: black;
+    margin-top: 1px;
+}
+
+.stripe-blue {
+    background: #13bee8;
+}
+
+.portals-container {
+    position: relative;
+    margin: 20px auto 0 auto;
+    width: 96%;
+    max-width: 1000px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: flex-start;
+    gap: 15px 20px;
+    z-index: 5;
+    padding-bottom: 5px;
+    flex: 1;
+}
+
+.portals-container a {
+    text-decoration: none;
+}
+
+.portal-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+    width: 170px;
+}
+
+.portal-item:hover {
+    opacity: 0.8;
+}
+
+.portal-item img {
+    width: 85px;
+    height: 85px;
+    object-fit: cover;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+}
+
+.portal-item:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+.portal-item span {
+    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    color: white;
+    font-size: 15px;
+    text-align: center;
+    white-space: normal;
+    width: 140px;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    margin-top: 2px;
+}
