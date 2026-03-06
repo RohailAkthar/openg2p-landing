@@ -25,6 +25,7 @@ ENV SR_BENEFICIARY_PORTAL_URL="https://portal.explore.openg2p.org"
 ENV SR_MINLO_DASHBOARD_URL="https://sr.explore.openg2p.org"
 ENV SR_G2P_BRIDGE_URL="https://bridge.explore.openg2p.org"
 ENV SR_SPAR_URL="https://spar.explore.openg2p.org"
+ENV PBMS_DASHBOARD_URL="https://pbms.explore.openg2p.org"
 
 # Use the custom entrypoint
 CMD ["/entrypoint.sh"]

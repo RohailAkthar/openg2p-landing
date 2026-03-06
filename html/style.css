@@ -13,14 +13,23 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    background:
-        linear-gradient(to left,
-            rgba(25, 55, 147, 1),
-            rgba(11, 123, 199, 1) 40%,
-            rgba(42, 136, 195, 1) 100%);
+    background: radial-gradient(circle at top right, #1e3a8a, #1e1b4b), #0f172a;
     overflow: hidden;
     display: flex;
     flex-direction: column;
+}
+
+.desktop::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../public/assets/Group.png') no-repeat bottom left;
+    background-size: 40%;
+    opacity: 0.1;
+    pointer-events: none;
 }
 
 .clip-path-group {
@@ -46,41 +55,51 @@ body {
 .registration-portal {
     position: absolute;
     width: 130px;
-    height: auto;
+    height: 70px;
     top: 30px;
-    right: 40px;
+    left: 40px;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 .portal-logo {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
 }
 
 .main-card {
     position: relative;
-    width: 94%;
-    height: 180px;
-    margin: 140px auto 0 auto;
-    background: #d6d5d5;
-    border-radius: 15px;
+    width: 90%;
+    max-width: 1100px;
+    height: 160px;
+    margin: 100px auto 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 10px;
+    padding: 30px 40px;
     gap: 8px;
     overflow: hidden;
     z-index: 5;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 .card-background {
     position: absolute;
-    width: 390px;
-    top: -10px;
-    right: -10px;
+    width: 450px;
+    top: 0;
+    right: 0;
+    height: 100%;
     z-index: 1;
     overflow: hidden;
+    opacity: 0.6;
 }
 
 .card-background img {
@@ -101,53 +120,78 @@ body {
 }
 
 .card-logo {
-    width: 320px;
+    position: absolute;
+    width: 130px;
     height: 70px;
+    top: 30px;
+    right: 40px;
     object-fit: contain;
-    z-index: 2;
+    z-index: 10;
 }
 
 .know-more-btn {
-    width: 160px;
-    height: 40px;
-    background: #2b89c4;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
     border: none;
-    border-radius: 9px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    font-family: "Montserrat", Helvetica, Arial, sans-serif;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    font-family: inherit;
     font-weight: 600;
     color: white;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
     z-index: 2;
+    margin-top: 10px;
 }
 
 .know-more-btn:hover {
-    background: #2477ad;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
 }
 
 .main-title {
-    position: absolute;
-    top: 65px;
-    left: 40px;
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    color: #F8F6F6;
-    font-size: 28px;
+    font-weight: 700;
+    color: white;
+    font-size: 26px;
     z-index: 10;
+    margin: 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .welcome-text {
-    position: absolute;
-    top: 40px;
-    left: 40px;
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
-    font-weight: 500;
-    color: #f8f201;
-    font-size: 18px;
+    font-weight: 600;
+    color: #4ade80;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     z-index: 10;
+    margin-bottom: -2px;
+}
+
+.main-card h2,
+.main-card .welcome-text {
+    position: static;
+}
+
+.illustration-container {
+    position: fixed;
+    bottom: 05px;
+    right: -20px;
+    width: 750px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    transition: opacity 0.5s ease;
+}
+
+.zanzibar-illustration {
+    width: 100%;
+    height: auto;
+    mask-image: radial-gradient(circle at center, black 10%, transparent 85%);
+    -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 85%);
 }
 
 .header {
@@ -212,17 +256,15 @@ body {
 
 .portals-container {
     position: relative;
-    margin: 20px auto 0 auto;
-    width: 96%;
-    max-width: 1000px;
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 1100px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: flex-start;
-    gap: 15px 20px;
+    gap: 15px;
     z-index: 5;
-    padding-bottom: 5px;
-    flex: 1;
+    padding: 10px;
 }
 
 .portals-container a {
@@ -233,27 +275,27 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     background: transparent;
     border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
+    padding: 5px;
     width: 170px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .portal-item:hover {
-    opacity: 0.8;
+    transform: translateY(-10px);
+    box-shadow: none;
 }
 
 .portal-item img {
-    width: 85px;
-    height: 85px;
-    object-fit: cover;
-    border: 2px solid white;
+    width: 75px;
+    height: 75px;
+    padding: 8px;
+    background: white;
     border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: all 0.2s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .portal-item:hover img {
@@ -265,10 +307,110 @@ body {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 700;
     color: white;
-    font-size: 15px;
+    font-size: 13.5px;
     text-align: center;
     white-space: normal;
     width: 140px;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    margin-top: 2px;
+    margin-top: 1px;
+}
+
+/* --- Responsive Media Queries --- */
+
+@media (max-width: 1024px) {
+    .main-card {
+        width: 95%;
+        padding: 30px;
+    }
+
+    .main-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop {
+        padding-top: 100px;
+        /* Space for stacked logos */
+    }
+
+    .registration-portal,
+    .card-logo {
+        position: absolute;
+        width: 100px;
+        height: 60px;
+        top: 20px;
+    }
+
+    .registration-portal {
+        left: 20px;
+    }
+
+    .card-logo {
+        right: 20px;
+    }
+
+    .main-card {
+        height: auto;
+        min-height: 200px;
+        margin-top: 60px;
+        padding: 30px 20px;
+        align-items: center;
+        /* Center content on mobile */
+        text-align: center;
+    }
+
+    .main-title {
+        font-size: 24px;
+        line-height: 1.3;
+    }
+
+    .welcome-text {
+        font-size: 16px;
+    }
+
+    .card-background {
+        width: 100%;
+        opacity: 0.3;
+    }
+
+    .portals-container {
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .portal-item {
+        width: calc(50% - 20px);
+        /* 2 items per row on tablet/mobile */
+        min-width: 150px;
+    }
+
+    .illustration-container {
+        display: none;
+
+        /* Hide decorative element on small screens to save space */
+    }
+}
+
+@media (max-width: 480px) {
+
+    .registration-portal,
+    .card-logo {
+        width: 80px;
+        height: 50px;
+    }
+
+    .main-title {
+        font-size: 20px;
+    }
+
+    .portal-item {
+        width: 100%;
+        /* Single column on very small phones */
+    }
+
+    .know-more-btn {
+        width: 100%;
+        max-width: 250px;
+    }
 }
