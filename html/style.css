@@ -13,11 +13,12 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: radial-gradient(circle at top right, #1e3a8a, #1e1b4b), #0f172a;
+    background: #ffffff;
     overflow: hidden;
     display: flex;
     flex-direction: column;
 }
+
 
 .desktop::before {
     content: '';
@@ -28,8 +29,28 @@ body {
     bottom: 0;
     background: url('../public/assets/Group.png') no-repeat bottom left;
     background-size: 40%;
-    opacity: 0.1;
+    opacity: 0.15;
     pointer-events: none;
+    z-index: 0;
+}
+
+.bg-zanzibar-1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 60%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.bg-zanzibar-1 {
+    background: url('../public/assets/zanzibar_1.png') no-repeat bottom left;
+    background-size: cover;
+    opacity: 0.7;
+    filter: blur(4px);
+    mask-image: radial-gradient(circle at 20% 80%, black 0%, transparent 65%);
+    -webkit-mask-image: radial-gradient(circle at 20% 80%, black 0%, transparent 65%);
 }
 
 .clip-path-group {
@@ -38,18 +59,32 @@ body {
     height: auto;
     top: 0;
     right: 0;
-    opacity: 0.3;
+    opacity: 0.4;
     z-index: 1;
 }
 
 .group {
     position: absolute;
-    width: 40%;
+    width: 20%;
     height: auto;
-    bottom: 0;
-    left: 0;
-    opacity: 0.2;
+    top: -20%;
+    opacity: 0.4;
     z-index: 1;
+    pointer-events: none;
+}
+
+.group-left {
+    left: -00%;
+}
+
+.group-middle {
+    left: 80%;
+    transform: translateX(-50%);
+    opacity: 0.4;
+}
+
+.group-right {
+    right: -00%;
 }
 
 .registration-portal {
@@ -74,32 +109,36 @@ body {
     position: relative;
     width: 90%;
     max-width: 1100px;
-    height: 160px;
+    min-height: 160px;
+    height: auto;
     margin: 100px auto 20px auto;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: #2F71F0;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     padding: 30px 40px;
+    text-align: center;
     gap: 8px;
     overflow: hidden;
     z-index: 5;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
 }
 
 .card-background {
     position: absolute;
-    width: 450px;
+    width: 380px;
     top: 0;
     right: 0;
     height: 100%;
     z-index: 1;
     overflow: hidden;
-    opacity: 0.6;
+    opacity: 0.8;
+    mask-image: linear-gradient(to left, black 60%, transparent);
+    -webkit-mask-image: linear-gradient(to left, black 60%, transparent);
 }
 
 .card-background img {
@@ -131,7 +170,8 @@ body {
 
 .know-more-btn {
     padding: 12px 32px;
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    /* background: linear-gradient(135deg, #3b82f6, #2563eb); */
+    background: #191A39;
     border: none;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
@@ -152,18 +192,28 @@ body {
 
 .main-title {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
-    font-weight: 700;
-    color: white;
-    font-size: 26px;
+    font-weight: 800;
+    color: #ffffff;
+    font-size: 32px;
     z-index: 10;
-    margin: 0;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 5px 0;
+}
+
+.ministry-text {
+    font-family: inherit;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 13.5px;
+    z-index: 10;
+    margin-top: -5px;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
 }
 
 .welcome-text {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
-    font-weight: 600;
-    color: #4ade80;
+    font-weight: 700;
+    color: #ffffff;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -172,18 +222,19 @@ body {
 }
 
 .main-card h2,
-.main-card .welcome-text {
+.main-card .welcome-text,
+.main-card .ministry-text {
     position: static;
 }
 
 .illustration-container {
     position: fixed;
-    bottom: 05px;
+    bottom: 01px;
     right: -20px;
     width: 750px;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.35;
+    opacity: 0.5;
     transition: opacity 0.5s ease;
 }
 
@@ -306,12 +357,11 @@ body {
 .portal-item span {
     font-family: "Montserrat", Helvetica, Arial, sans-serif;
     font-weight: 700;
-    color: white;
+    color: #1e293b;
     font-size: 13.5px;
     text-align: center;
     white-space: normal;
     width: 140px;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     margin-top: 1px;
 }
 
