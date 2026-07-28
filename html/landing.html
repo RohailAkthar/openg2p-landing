@@ -1,314 +1,943 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenG2P Sandbox</title>
-    <link rel="icon" type="image/svg+xml" href="https://openg2p.github.io/project/design-assets/favicon-for-white-bg.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet">
+    <title>Nigeria Programs and Benefits Disbursement System</title>
+    <link rel="icon" type="image/svg+xml"
+        href="https://upload.wikimedia.org/wikipedia/commons/b/bc/Coat_of_arms_of_Nigeria.svg">
+    <!-- Google Fonts: Montserrat & Inter for modern professional typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <style>
-        html, body {
-            margin: 0;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center; /* Centers container horizontally */
+        :root {
+            --ng-green: #008751;
+            --ng-green-dark: #004b23;
+            --ng-green-light: #00a86b;
+            --ng-gold: #daa520;
+            --ng-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #5e6e7a;
+            --card-shadow: 0 15px 35px rgba(0, 75, 35, 0.08);
+            --hover-shadow: 0 20px 40px rgba(0, 75, 35, 0.15);
         }
-        .container {
-            width: 100vw;
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            height: 100%;
             overflow: hidden;
         }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fa;
+            color: var(--text-dark);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Nigeria Flag Tri-color Header Strip */
+        .flag-strip {
+            height: 8px;
+            width: 100%;
+            display: flex;
+            flex-shrink: 0;
+            z-index: 1000;
+        }
+
+        .flag-strip .green {
+            flex: 1;
+            background-color: var(--ng-green);
+        }
+
+        .flag-strip .white {
+            flex: 1;
+            background-color: var(--ng-white);
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        /* Header Area */
         .header {
-            position: relative;
-            border-bottom: 1px solid #ddd;
-            background: #ffffff;
-            height: 80px; 
+            background-color: var(--ng-white);
+            height: 72px;
             display: flex;
-         }
-        .logo {
-            width: 144px;
-            height: auto;
-            position: absolute;
-            left: 161px;
-            top: 18px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            width: 100%;
+            flex-shrink: 0;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .brand {
-            position: relative;
-            background: #FEC401; 
-            height: 652px; 
+
+        .header-left {
             display: flex;
-            justify-content: center; /* Centers container horizontally */
+            align-items: center;
+            gap: 15px;
         }
-        .frame1 {
+
+        .nigeria-coat-arms {
+            height: 60px;
+            width: auto;
+        }
+
+
+
+        .header-right {
             display: flex;
-            position: relative; 
-            width: 900px;
-            height: 652px; 
-            justify-content: center; /* Centers container horizontally */
-         }
-        .brand-image-1 {
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nigeria-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nsipa-logo {
+            height: 52px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-text-block {
             display: flex;
-            position: absolute;
-            top: 40px;  
-            width: 311px;
-            height: 312px;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 12px;
         }
-        .brand-image-2 {
-            position: absolute;
-            #left: 201px; 
-            left:0px; 
-            top: 130px;  
-            width: 234px;
-            height: 130px;
-        }
-        .brand-image-3 {
-            position: absolute;
-            right: 0;
-            top: 130px;  
-            width: 247px;
-            height: 128px;
-        }
-        .brand-welcome {
-            position: absolute; 
-            left: 100px; 
-            top: 336px;  
-            font-family: 'Montserrat'; 
-            font-size: 20px;
+
+        .logo-text-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
             font-weight: 700;
+            color: #008751;
+            letter-spacing: 0.5px;
+            line-height: 1.25;
+            text-transform: uppercase;
         }
-        .brand-openg2p {
-            position: absolute;
-            top: 354px;  
-            font-family: 'Montserrat'; 
-            font-weight: 700; 
-            font-size: 90px;
-            color: #FFFFFF;
-        }
-        .brand-interactive {
-            position: absolute; 
-            left: 750px; 
-            top: 440px;  
-            max-width: 248px;
-            font-family: 'Montserrat'; 
+
+        .logo-text-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
             font-weight: 500;
-            font-size: 24px;
-            color: #000000;
+            color: #7f8c8d;
+            line-height: 1.25;
+            margin-top: 2px;
         }
-        .brand-interactive-text {
-            position: absolute; 
-            top: 525px;  
-            max-width: 656px;
-            font-family: 'Montserrat'; 
-            font-weight: 400; 
-            font-size: 18px;
-            color: #1F1F1F;
-            text-align: center;    
+
+        .gov-seal-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: conic-gradient(var(--ng-green) 0% 33%, var(--ng-white) 33% 66%, var(--ng-green) 66% 100%);
+            border: 2px solid var(--ng-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
-        .black-background {
+
+        .gov-seal-inner {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: var(--ng-white);
+            border: 1.5px solid var(--ng-green-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 800;
+            color: var(--ng-green-dark);
+        }
+
+        .gov-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .gov-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--ng-green-dark);
+            letter-spacing: 0.5px;
+        }
+
+        .gov-subtitle {
+            font-size: 10px;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        /* Hero Banner */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 6%;
+            gap: 24px;
+            overflow: hidden;
             position: relative;
-            background: #000000;
-            height: 900px; 
+            background-image:
+                radial-gradient(rgba(0, 135, 81, 0.08) 1.5px, transparent 1.5px),
+                url('assets/bg-nigeria.png');
+            background-size: 24px 24px, cover;
+            background-position: center;
+        }
+
+        .main-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.94) 100%);
+            z-index: 1;
+        }
+
+        .hero-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
             display: flex;
             justify-content: center;
+            flex-shrink: 0;
         }
-        .black-container {
+
+        .hero-card {
+            width: 100%;
+            max-width: 1200px;
+            background: linear-gradient(135deg, var(--ng-green-dark) 0%, var(--ng-green) 100%);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 75, 35, 0.12);
+            display: flex;
+            align-items: center;
+            min-height: 140px;
+            padding: 24px 5%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 85%;
+            color: var(--ng-white);
+        }
+
+        .hero-welcome {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 20px;
+                white-space: normal;
+            }
+        }
+
+        .hero-subtitle {
+            font-size: 12px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: #0b1a11;
+            color: var(--ng-white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 12px 36px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-2px);
+            background-color: #122a1b;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* SVG Overlapping Waves on Right Side */
+        .hero-waves {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 45%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Portals Section */
+        .portals-section {
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .portals-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--ng-green-dark);
+            margin-bottom: 8px;
+        }
+
+        .section-desc {
+            font-size: 15px;
+            color: var(--text-muted);
+            max-width: 600px;
+            line-height: 1.4;
+        }
+
+        /* Portal Cards Grid */
+        .portal-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px 24px;
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .portal-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 14px;
+            padding: 12px 20px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            grid-column: span 2;
+            height: 64px;
+            overflow: hidden;
+        }
+
+        .portal-card:nth-child(4) {
+            grid-column: 2 / span 2;
+        }
+
+        .portal-card:nth-child(5) {
+            grid-column: 4 / span 2;
+        }
+
+        @media (max-width: 768px) {
+            .portal-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 480px;
+                gap: 16px;
+            }
+
+            .portal-card,
+            .portal-card:nth-child(4),
+            .portal-card:nth-child(5) {
+                grid-column: span 1;
+            }
+
+            .portal-card:nth-child(5) {
+                grid-column: span 2;
+            }
+        }
+
+        .portal-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+
+        .portal-card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            flex-shrink: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .portal-card-icon svg {
+            width: 21px;
+            height: 21px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portal-card:hover .portal-card-icon {
+            transform: scale(1.08) rotate(-3deg);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.16);
+        }
+
+        /* Card color accent borders and icons backgrounds/hover glows */
+        .social-registry { 
+            border-left: 4px solid #00a86b; 
+            background: linear-gradient(135deg, rgba(0, 168, 107, 0.05) 0%, rgba(255, 255, 255, 0.65) 100%);
+        }
+        .social-registry .portal-card-icon { 
+            background: linear-gradient(135deg, #38ef7d, #11998e); 
+        }
+        .social-registry .portal-card-icon svg * {
+            stroke: #ffffff !important;
+        }
+        .social-registry .portal-arrow { color: #00a86b; }
+        .social-registry:hover {
+            border-color: #00a86b;
+            background: linear-gradient(135deg, rgba(0, 168, 107, 0.12) 0%, rgba(255, 255, 255, 0.85) 100%);
+            box-shadow: 0 10px 25px -5px rgba(0, 168, 107, 0.18), 0 8px 10px -6px rgba(0, 168, 107, 0.12);
+        }
+        
+        .pbms { 
+            border-left: 4px solid #f39c12; 
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.05) 0%, rgba(255, 255, 255, 0.65) 100%);
+        }
+        .pbms .portal-card-icon { 
+            background: linear-gradient(135deg, #f1c40f, #e67e22); 
+        }
+        .pbms .portal-card-icon svg * {
+            stroke: #ffffff !important;
+        }
+        .pbms .portal-arrow { color: #f39c12; }
+        .pbms:hover {
+            border-color: #f39c12;
+            background: linear-gradient(135deg, rgba(243, 156, 18, 0.12) 0%, rgba(255, 255, 255, 0.85) 100%);
+            box-shadow: 0 10px 25px -5px rgba(243, 156, 18, 0.18), 0 8px 10px -6px rgba(243, 156, 18, 0.12);
+        }
+        
+        .bridge { 
+            border-left: 4px solid #3498db; 
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.05) 0%, rgba(255, 255, 255, 0.65) 100%);
+        }
+        .bridge .portal-card-icon { 
+            background: linear-gradient(135deg, #54a0ff, #2980b9); 
+        }
+        .bridge .portal-card-icon svg * {
+            stroke: #ffffff !important;
+        }
+        .bridge .portal-arrow { color: #3498db; }
+        .bridge:hover {
+            border-color: #3498db;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.12) 0%, rgba(255, 255, 255, 0.85) 100%);
+            box-shadow: 0 10px 25px -5px rgba(52, 152, 219, 0.18), 0 8px 10px -6px rgba(52, 152, 219, 0.12);
+        }
+        
+        .spar { 
+            border-left: 4px solid #2c3e50; 
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.05) 0%, rgba(255, 255, 255, 0.65) 100%);
+        }
+        .spar .portal-card-icon { 
+            background: linear-gradient(135deg, #757f9a, #2c3e50); 
+        }
+        .spar .portal-card-icon svg * {
+            stroke: #ffffff !important;
+        }
+        .spar .portal-card-icon svg circle {
+            fill: #ffffff !important;
+        }
+        .spar .portal-arrow { color: #2c3e50; }
+        .spar:hover {
+            border-color: #2c3e50;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.12) 0%, rgba(255, 255, 255, 0.85) 100%);
+            box-shadow: 0 10px 25px -5px rgba(44, 62, 80, 0.18), 0 8px 10px -6px rgba(44, 62, 80, 0.12);
+        }
+
+        .beneficiary-portal { 
+            border-left: 4px solid #9b51e0; 
+            background: linear-gradient(135deg, rgba(155, 81, 224, 0.05) 0%, rgba(255, 255, 255, 0.65) 100%);
+        }
+        .beneficiary-portal .portal-card-icon { 
+            background: linear-gradient(135deg, #a55eea, #7020c0); 
+        }
+        .beneficiary-portal .portal-card-icon svg * {
+            stroke: #ffffff !important;
+        }
+        .beneficiary-portal .portal-arrow { color: #9b51e0; }
+        .beneficiary-portal:hover {
+            border-color: #9b51e0;
+            background: linear-gradient(135deg, rgba(155, 81, 224, 0.12) 0%, rgba(255, 255, 255, 0.85) 100%);
+            box-shadow: 0 10px 25px -5px rgba(155, 81, 224, 0.18), 0 8px 10px -6px rgba(155, 81, 224, 0.12);
+        }
+
+        .portal-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+            transition: color 0.2s ease;
+            text-align: left;
+            line-height: 1.2;
+            flex-grow: 1;
+        }
+
+        .portal-card:hover .portal-card-title {
+            color: var(--ng-green-dark);
+        }
+
+        .portal-arrow {
+            width: 14px;
+            height: 14px;
+            opacity: 0;
+            transform: translateX(-6px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .portal-card:hover .portal-arrow {
+            opacity: 0.85;
+            transform: translateX(0);
+        }
+
+        .portal-card-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 12.5px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Contact Footer */
+        .footer {
+            background-color: var(--ng-white);
+            border-top: 1px solid #e2e8f0;
+            padding: 16px 6% 12px 6%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
+            flex-shrink: 0;
             position: relative;
-            width: 900px;
-            min-height: 850px;
-            padding-top: 100px;
+            z-index: 2;
         }
-        .black-explore {
-            position: absolute; 
-            width: 768px;
-            height: 79px;
-            top: 8px;  
-            font-family: 'Roboto Slab'; 
-            font-weight: 500;
-            font-size: 50px;
-            color: #FFFFFF;
-            text-align: center;
 
-        }
-        .black-explore-text {
-            position: absolute; 
-            top: 90px;  
-            width: 768px;
-            font-family: 'Montserrat'; 
-            font-weight: 'Medium';
-            font-size: 22px;
-            color: #FFFFFF;
-            text-align: center;
-        }
-        .card-grid {
+        .footer-partner {
             display: flex;
-            flex-wrap: wrap;
-            gap: 40px 36px; /* vertical and horizontal spacing */
-            justify-content: center;
-            margin-top: 100px;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
         }
-        .link-square {
-            position: relative;
-            width: 267px;
-            height: 267px;
-            border-radius: 20px;
-            background: #FEC401;
+
+        .partner-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            color: #7f8c8d;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
-       .link-icon {
-            position: absolute; 
-            left: 203px;
-            top: 36px;
-            width: 46px;
-            height: 46px;
+
+        .partner-logos {
+            display: flex;
+            align-items: center;
+            gap: 16px;
         }
-       .link-text-title {
-            position: absolute; 
-            left: 18px;
-            top: 35px;
-            width: 115px;
-            font-weight: 500;
-            font-size: 24px;
-            font-family: 'Roboto Slab';
-            color: #514C4C;
+
+        .partner-logo-wordmark {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
-       .link-text {
-            position: absolute; 
-            left: 18px;
-            top: 120px;
-            width: 232px;
-            height: 114px;
-            font-weight: 300;
+
+        .percifi-logo {
+            color: #008751;
+        }
+
+        .iqs-logo {
+            color: #2c3e50;
+        }
+
+        .partner-separator {
+            color: #cbd5e1;
             font-size: 16px;
-            font-family: 'Roboto Slab';
-            color: #514C4C;
+            font-weight: 300;
         }
-        .contact-background {
-            position: relative;
-            background: #000000;
-            height: 796px; 
+
+        .partner-icon {
+            flex-shrink: 0;
+        }
+
+        .footer-bottom {
+            width: 100%;
+            max-width: 1200px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-align: center;
         }
-        .contact-container {
-            position: relative;
+
+        .footer-bottom .copyright {
+            font-family: 'Inter', sans-serif;
+            font-size: 11.5px;
+            font-weight: 500;
+            color: #5e6e7a;
+        }
+
+        .footer-bottom .subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            color: #7f8c8d;
+        }
+
+        .footer-flag-strip {
+            height: 6px;
+            width: 100%;
             display: flex;
-            width: 962px;
-            height: 730px;
-            top: 0px;
-            justify-content: center;
-            text-align: center;
+            flex-shrink: 0;
         }
-       .contact-title {
-            position: absolute; 
-            top: 0px;
-            width: 768px;
-            height: 79px;
-            font-weight: 500;
-            font-size: 50px;
-            font-family: 'Roboto Slab';
-            color: #FFFFFF;
-            text-align: center;
-        } 
-       .contact-email {
-            position: absolute; 
-            top: 98px;
-            width: 768px;
-            height: 27px;
-            font-weight: 500;
-            font-size: 18px;
-            font-family: 'Montserrat';
-            color: #F3BB1D;
-            text-align: center;
-        } 
-        .contact-image {
-            position: absolute; 
-            width: 626px;
-            height: 610px;
-            top: 186px;
-            left: 137px;
+
+        @media (max-height: 620px) {
+
+            html,
+            body {
+                overflow-y: auto;
+                height: auto;
+            }
+
+            .main-container {
+                overflow-y: visible;
+                height: auto;
+            }
         }
-        .hidden {
-        display: none; /* Completely hides the element */
+
+        .footer-flag-strip .green {
+            flex: 1;
+            background-color: var(--ng-green);
         }
-    
+
+        .footer-flag-strip .white {
+            flex: 1;
+            background-color: var(--ng-white);
+            box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(0, 0, 0, 0.02);
+        }
+
+        .footer-flag-strip .red {
+            flex: 1;
+            background-color: #d32f2f;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 900px) {
+            .hero-card {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 6%;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .hero-waves {
+                width: 100%;
+                height: 50%;
+                top: auto;
+                bottom: 0;
+            }
+
+            .header {
+                padding: 0 4%;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .header-right {
+                display: none;
+                /* Hide text logo on small mobiles for clean view */
+            }
+
+            .hero-title {
+                font-size: 26px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            .portal-grid {
+                gap: 25px 15px;
+            }
+
+            .portal-link {
+                width: 150px;
+            }
+
+            .portal-circle-wrapper {
+                width: 110px;
+                height: 110px;
+            }
+
+            .portal-circle-inner {
+                width: 98px;
+                height: 98px;
+                border-width: 4px;
+            }
+
+            .portal-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .portal-title {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <img src="https://openg2p.github.io/project/design-assets/OpenG2PHorizontalLogoLightBackground.png" class="logo">
+    <!-- Nigeria Flag Header Border -->
+    <div class="flag-strip">
+        <div class="green"></div>
+        <div class="white"></div>
+        <div class="green"></div>
+    </div>
+
+    <!-- Header Navigation -->
+    <div class="header">
+        <div class="header-left">
+            <img src="assets/new_nigeria_logo.png" alt="Nigeria Government Logo" class="nigeria-logo">
+            <div class="logo-text-block">
+                <div class="logo-text-title">FEDERAL MINISTRY</div>
+                <div class="logo-text-subtitle">Humanitarian Affairs & Poverty Reduction</div>
+            </div>
         </div>
-        <div class="brand">
-            <div class="frame1">
-                <div class="brand-welcome">Welcome to</div>
-                <div class="brand-image-1"><img src="https://openg2p.github.io/project/design-assets/sandbox-landing-1.png"></img></div>
-                <div class="brand-image-2"><img src="https://openg2p.github.io/project/design-assets/brand-image-2.png"></img></div>
-                <div class="brand-image-3"><img src="https://openg2p.github.io/project/design-assets/brand-image-3.png"></img></div>
-                <div class="brand-openg2p">OpenG2P's</div>
-                <div class="brand-interactive">interactive sandbox</div>
-                <div class="brand-interactive-text">a dynamic platform designed for you to explore the functionalities of our modules and see our products in action. This is your gateway to understanding the full potential of our offerings.</div>
-           </div>
+        <div class="header-right">
+            <img src="assets/nsipa_logo.jpeg" alt="NSIPA Logo" class="nsipa-logo">
         </div>
-        <div class="black-background">
-            <div class="black-container">
-                <div class="black-explore">Let's Explore!</div>
-                <div class="black-explore-text">Select a module to experience our interactive sandbox.</div>
-                <div class="card-grid">
+    </div>
 
-                    <a href="${SR_URL}" target="_blank">
-                        <div class="link-square">
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                            <div class="link-text-title">Social Registry</div>
-                            <div class="link-text">Registry building block of OpenG2P</div>
-                        </div>
-                        </a>
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <!-- Hero Section -->
+        <div class="hero-container">
+            <div class="hero-card">
+                <div class="hero-content">
+                    <div class="hero-welcome">Welcome to</div>
+                    <h1 class="hero-title">Nigeria Programs and Benefits Disbursement System</h1>
+                    <p class="hero-subtitle">
+                        Federal Ministry of Humanitarian Affairs & Poverty Reduction.
+                    </p>
+                    <a href="#explore" class="hero-btn" style="margin-top: 12px;">Know More</a>
+                </div>
+                <!-- Wavy background decoration (Nigeria Flag Colors inspired) -->
+                <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"
+                    preserveAspectRatio="none">
+                    <path d="M 120 0 C 230 60, 180 180, 270 300 L 400 300 L 400 0 Z" fill="rgba(255,255,255,0.04)" />
+                    <path d="M 180 0 C 260 80, 220 200, 310 300 L 400 300 L 400 0 Z" fill="#00a86b" opacity="0.4" />
+                    <path d="M 230 0 C 290 90, 260 210, 350 300 L 400 300 L 400 0 Z" fill="#004b23" opacity="0.8" />
+                    <path d="M 280 0 C 330 100, 300 220, 380 300 L 400 300 L 400 0 Z" fill="#008751" />
+                </svg>
+            </div>
+        </div>
 
-                    <a href="${PBMS_URL}" target="_blank">
-                        <div class="link-square">
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                            <div class="link-text-title">PBMS</div>
-                            <div class="link-text">Program and Beneficiary Management System</div>
+        <!-- Portals Section -->
+        <div class="portals-section" id="explore">
+            <div class="portals-container">
+                <div class="portal-grid">
+                    <!-- Social Registry -->
+                    <a href="${SR_URL}" class="portal-card social-registry" target="_blank">
+                        <div class="portal-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#00a86b" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="9" cy="7" r="4" stroke="#00a86b" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#00a86b" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#00a86b" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
-                        </a>
+                        <div class="portal-card-title">Social Registry</div>
+                        <svg class="portal-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
 
-                    <a href="${SPAR_URL}" target="_blank">
-                        <div class="link-square" >
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                            <div class="link-text-title">SPAR</div>
-                            <div class="link-text">Social Payments Account Registry. An ID Mapper building block</div>
+                    <!-- PBMS -->
+                    <a href="${PBMS_URL}" class="portal-card pbms" target="_blank">
+                        <div class="portal-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2" stroke="#f39c12" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="8" y1="21" x2="16" y2="21" stroke="#f39c12" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="12" y1="17" x2="12" y2="21" stroke="#f39c12" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M12 7v5l3 3" stroke="#f39c12" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
                         </div>
-                        </a>
+                        <div class="portal-card-title">PBMS</div>
+                        <svg class="portal-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
 
-                    <a href="${BRIDGE_URL}" target="_blank">
-                            <div class="link-square" >
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                            <div class="link-text-title">G2P Bridge</div>
-                            <div class="link-text">Bulk disbursement orchestrator</div>
+                    <!-- Bridge -->
+                    <a href="${BRIDGE_URL}" class="portal-card bridge" target="_blank">
+                        <div class="portal-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 3h5v5" stroke="#3498db" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4 20L21 3" stroke="#3498db" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M21 16v5h-5" stroke="#3498db" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M4 4l5 5" stroke="#3498db" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M12 12l9 9" stroke="#3498db" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
                         </div>
-                        </a>
+                        <div class="portal-card-title">Bridge</div>
+                        <svg class="portal-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
 
-                    <a href="${BENEFICIARY_PORTAL_URL}" target="_blank">
-                        <div class="link-square" style="background-color: #F07B1A;">
-                            <div class="link-icon"><img src="https://openg2p.github.io/project/design-assets/link-icon.svg"></img></div>
-                            <div class="link-text-title">Beneficiary Portal</div>
-                            <div class="link-text">Portal for beneficiaries to access services and manage their information</div>
+                    <!-- SPAR -->
+                    <a href="${SPAR_URL}" class="portal-card spar" target="_blank">
+                        <div class="portal-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="4" width="18" height="16" rx="2" stroke="#2c3e50" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="16" y1="2" x2="16" y2="6" stroke="#2c3e50" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="8" y1="2" x2="8" y2="6" stroke="#2c3e50" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <line x1="3" y1="10" x2="21" y2="10" stroke="#2c3e50" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <circle cx="8" cy="15" r="1.5" fill="#2c3e50" />
+                                <line x1="12" y1="15" x2="17" y2="15" stroke="#2c3e50" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
+                        <div class="portal-card-title">SPAR</div>
+                        <svg class="portal-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+
+                    <!-- Beneficiary Portal -->
+                    <a href="${BENEFICIARY_PORTAL_URL}" class="portal-card beneficiary-portal" target="_blank">
+                        <div class="portal-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                                    stroke="#9b51e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                <polyline points="22,6 12,13 2,6" stroke="#9b51e0" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="portal-card-title">Beneficiary Portal</div>
+                        <svg class="portal-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 </div>
             </div>
-
-        </div>
-        <div class="contact-background"> 
-            <div class="contact-container"> 
-                <div class="contact-title">Contact Us</div> 
-                <div class="contact-email">info@openg2p.org</div> 
-                <div class="contact-image"><img src="https://openg2p.github.io/project/design-assets/collage.png"></img></div>
-            </div>
         </div>
     </div>
-</body>
-</html>
 
+    <!-- Contact & Footer -->
+    <div class="footer">
+        <div class="footer-partner">
+            <div class="partner-label">TECHNOLOGY PARTNERS</div>
+            <div class="partner-logos">
+                <div class="partner-logo-wordmark percifi-logo">Percifi</div>
+                <div class="partner-separator">|</div>
+                <div class="partner-logo-wordmark iqs-logo">IQS</div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">&copy; 2026 Federal Ministry of Humanitarian Affairs and Poverty Reduction</div>
+            <div class="subtext">Unified Platform for Social Benefits Administration and Citizen Service Delivery</div>
+        </div>
+    </div>
+
+    <!-- Footer Flag Strip -->
+    <div class="footer-flag-strip">
+        <div class="green"></div>
+        <div class="white"></div>
+        <div class="red"></div>
+    </div>
+</body>
+
+</html>
